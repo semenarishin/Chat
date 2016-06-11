@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.lang.Integer;
+import java.net.InetAddress;
 
 import main.Const;
 
@@ -17,17 +19,24 @@ public class Client {
 	public Client() {
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("������ IP ��� ������祭�� � �ࢥ��.");
-		System.out.println("��ଠ�: xxx.xxx.xxx.xxx");
+		System.out.println("Введите доменное имя для подключения к серверу.");
+		String domen = scan.nextLine();
 
-		String ip = scan.nextLine();
+		int p = 0;
+		System.out.println("Введите порт для подключения к серверу.");
+		while(!scan.hasNextInt())
+			System.out.println("Неправильный номер порта");
+		p = scan.nextInt();
+		System.out.println("Успешно!");
+		scan.nextLine();
 
 		try {
-			socket = new Socket(ip, Const.Port);
+			InetAddress address = InetAddress.getByName(domen);
+			socket = new Socket(address, p);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new PrintWriter(socket.getOutputStream(), true);
 
-			System.out.println("������ ᢮� ���:");
+			System.out.println("Введите свой ник:");
 			out.println(scan.nextLine());
 
 			Resender resend = new Resender();
@@ -52,7 +61,7 @@ public class Client {
 			out.close();
 			socket.close();
 		} catch (Exception e) {
-			System.err.println("��⮪� �� �뫨 �������!");
+			System.err.println("Не удалось закрыть соединение");
 		}
 	}
 
@@ -72,10 +81,10 @@ public class Client {
 					System.out.println(str);
 				}
 			} catch (IOException e) {
-				System.err.println("�訡�� �� ����祭�� ᮮ�饭��.");
+				System.err.println("Ошибка при получении сообщения.");
 				e.printStackTrace();
 			}
 		}
 	}
 
-}
+}ng s =

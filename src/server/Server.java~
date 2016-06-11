@@ -51,7 +51,7 @@ public class Server {
 				}
 			}
 		} catch (Exception e) {
-			System.err.println("Потоки не были закрыты!");
+			System.err.println("┬П┬о├в┬о┬к┼б ┬н┬е ┬б├л┬л┼б ┬з┬а┬к├а├л├в├л!");
 		}
 	}
 
@@ -125,7 +125,7 @@ public class Server {
 					System.exit(0);
 				}
 			} catch (Exception e) {
-				System.err.println("Потоки не были закрыты!");
+				System.err.println("╨Э╨╡ ╤Г╨┤╨░╨╗╨╛╤Б╤М ╨╖╨░╨║╤А╤Л╤В╤М ╤Б╨╛╨╡╨┤╨╕╨╜╨╡╨╜╨╕╨╡");
 			}
 		}
 	}

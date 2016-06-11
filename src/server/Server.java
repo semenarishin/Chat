@@ -51,7 +51,7 @@ public class Server {
 				}
 			}
 		} catch (Exception e) {
-			System.err.println("®â®ªš ­¥ ¡ë«š § ªàëâë!");
+			System.err.println("Не удалось закрыть соединения");
 		}
 	}
 

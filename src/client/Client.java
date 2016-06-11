@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.lang.Integer;
+import java.net.InetAddress;
 
 import main.Const;
 
@@ -17,13 +19,20 @@ public class Client {
 	public Client() {
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("Введите IP для подключения к серверу.");
-		System.out.println("Формат: xxx.xxx.xxx.xxx");
+		System.out.println("Введите доменное имя для подключения к серверу.");
+		String domen = scan.nextLine();
 
-		String ip = scan.nextLine();
+		int p = 0;
+		System.out.println("Введите порт для подключения к серверу.");
+		while(!scan.hasNextInt())
+			System.out.println("Неправильный номер порта");
+		p = scan.nextInt();
+		System.out.println("Успешно!");
+		scan.nextLine();
 
 		try {
-			socket = new Socket(ip, Const.Port);
+			InetAddress address = InetAddress.getByName(domen);
+			socket = new Socket(address, p);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new PrintWriter(socket.getOutputStream(), true);
 
